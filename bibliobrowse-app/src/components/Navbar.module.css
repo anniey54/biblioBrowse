@@ -12,17 +12,17 @@
     background-color: white;
     border-bottom: 1px solid black;
     height: 64px;
+}
+
+.desktop {
+    display: flex;
+    gap: 28px;
     a {
         border-bottom: 2px solid white;
         &:hover {
             border-bottom: 2px solid var(--primary);
         }
     }
-}
-
-.desktop {
-    display: flex;
-    gap: 28px;
 }
 
 .mobile {
