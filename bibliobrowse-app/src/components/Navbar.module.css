@@ -25,3 +25,43 @@
     gap: 28px;
 }
 
+.mobile {
+    display: none;
+    border: 0px;
+    cursor: pointer;
+    padding: 0;
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.mobileMenu {
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    background-color: var(--primary);
+    height: 100vh;
+    flex-direction: column;
+    a {
+        padding: 16px;
+        padding-left: 8%;
+        border-bottom: 1.5px solid white;
+        &:hover {
+            color: var(--text-black);
+            background-color: var(--off-white);
+        }
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+    }
+    .mobileMenu {
+        display: flex;
+    }
+}
