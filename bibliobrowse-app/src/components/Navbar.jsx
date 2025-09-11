@@ -23,11 +23,6 @@ const Navbar = () => {
     setIsAccountMenuOpen(false);
   }
 
-  /* user profile menu styling  */
-  const menuItemStyle = ({ hover }) => hover 
-    ? styles.menuItemHover
-    : styles.menuItem;
-
   return (
     <>
       <nav className={styles.navbar}>
@@ -50,10 +45,10 @@ const Navbar = () => {
                     </div>
                   </MenuButton>}
                 >
-                <MenuItem className={menuItemStyle} href='/'>Profile</MenuItem>
-                <MenuItem className={menuItemStyle} href='/books'>Create Collection</MenuItem>
-                { user.isAdmin && <MenuItem className={menuItemStyle} href='/'>Create Book</MenuItem> }
-                <MenuItem className={menuItemStyle}>Logout</MenuItem>
+                <MenuItem className={styles.menuItem} href='/'>Profile</MenuItem>
+                <MenuItem className={styles.menuItem} href='/books'>Create Collection</MenuItem>
+                { user.isAdmin && <MenuItem className={styles.menuItem} href='/'>Create Book</MenuItem> }
+                <MenuItem className={styles.menuItem}>Logout</MenuItem>
               </Menu>
               : <Link to={'/signin'}>Sign in</Link>
             }
