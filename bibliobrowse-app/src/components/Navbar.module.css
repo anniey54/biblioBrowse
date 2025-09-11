@@ -1,0 +1,138 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 24px;
+    background-color: white;
+    border-bottom: 1px solid black;
+    height: 64px;
+}
+
+.desktop {
+    display: flex;
+    gap: 28px;
+    a {
+        border-bottom: 2px solid white;
+        &:hover {
+            border-bottom: 2px solid var(--primary);
+        }
+    }
+    button {
+        border: 0px;
+        cursor: pointer;
+        padding: 0px;
+        &:hover {
+            color: var(--primary);
+            background-color: transparent;
+        }
+    }
+    .menuItem{
+        border-bottom: 2px solid var(--off-white);
+        &:hover {
+            background-color: var(--primary);
+            color: var(--text-black);
+            border-bottom: 2px solid var(--off-white);
+        }
+    }
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    img {
+        width: 25px;
+        height: 25px;
+        object-fit: cover;
+        border-radius: 100%;
+        margin-right: 8px;
+    }
+    p {
+        max-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.mobile {
+    display: none;
+    border: 0px;
+    cursor: pointer;
+    padding: 0;
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.mobileNav {
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    background-color: var(--primary);
+    height: 100vh;
+    flex-direction: column;
+    a {
+        padding: 16px;
+        padding-left: 8%;
+        border-bottom: 1.5px solid white;
+        &:hover {
+            color: var(--text-black);
+            background-color: var(--off-white);
+        }
+    }
+}
+
+.mobileAccountMenu {
+    .accountName {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 16px;
+        padding-left: 8%;
+        padding-right: 8%;
+        gap: 8px;
+        align-items: center;
+        border-bottom: 1.5px solid white;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--off-white);
+        }
+    }
+    a {
+        padding-left: 16%;
+        border-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .desktop {
+        gap: 12px;
+    }
+    .profile {
+        img {
+            margin-right: 4px;
+        }
+        p {
+            max-width: 140px;
+        }
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+    }
+    .mobileNav {
+        display: flex;
+    }
+}

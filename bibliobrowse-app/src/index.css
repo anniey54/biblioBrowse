@@ -14,6 +14,10 @@
   --border: #050315;
 }
 
+body {
+  margin: 0px;
+}
+
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.65rem;
@@ -32,9 +36,9 @@ h3 {
   font-weight: 600;
 }
 
-p, span, label {
+p, div, span, label {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   font-weight: 300;
   margin: 0px;
 }
@@ -47,7 +51,7 @@ title {
 
 a, Link {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   font-weight: 300;
   cursor: pointer;
   text-decoration: none;
@@ -59,7 +63,7 @@ a, Link {
 
 input, textarea, select {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   font-weight: 300;
   padding: 0.5rem /* 8px */;
   border: 1px solid var(--border);
@@ -69,7 +73,7 @@ input, textarea, select {
 
 button {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   font-weight: 300;
   padding: 0.5rem /* 8px */;
   background-color: white;
@@ -128,8 +132,15 @@ div::-webkit-scrollbar-thumb {
   background: rgb(156 163 175);
 }
 
+/* small and med screens */
 @media only screen and (max-width: 768px) {
   h1 {
     font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
   }
 }
