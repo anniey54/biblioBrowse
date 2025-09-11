@@ -64,7 +64,7 @@
     }
 }
 
-.mobileMenu {
+.mobileNav {
     position: fixed;
     box-sizing: border-box;
     width: 100%;
@@ -80,6 +80,28 @@
             color: var(--text-black);
             background-color: var(--off-white);
         }
+    }
+}
+
+.mobileAccountMenu {
+    .accountName {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 16px;
+        padding-left: 8%;
+        padding-right: 8%;
+        gap: 8px;
+        align-items: center;
+        border-bottom: 1.5px solid white;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--off-white);
+        }
+    }
+    a {
+        padding-left: 16%;
+        border-bottom: 0;
     }
 }
 
@@ -101,7 +123,7 @@
     .mobile {
         display: flex;
     }
-    .mobileMenu {
+    .mobileNav {
         display: flex;
     }
 }
