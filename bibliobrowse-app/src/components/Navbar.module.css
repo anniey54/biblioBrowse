@@ -23,6 +23,35 @@
             border-bottom: 2px solid var(--primary);
         }
     }
+    button {
+        border: 0px;
+        cursor: pointer;
+        padding: 0px;
+        &:hover {
+            color: var(--primary);
+            background-color: transparent;
+        }
+    }
+    .menuItemHover {
+        background-color: var(--primary);
+    }
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    img {
+        width: 24px;
+        height: 24px;
+        object-fit: cover;
+    }
+    p {
+        max-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .mobile {
@@ -50,6 +79,17 @@
         &:hover {
             color: var(--text-black);
             background-color: var(--off-white);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .desktop {
+        gap: 12px;
+    }
+    .profile {
+        p {
+            max-width: 140px;
         }
     }
 }
