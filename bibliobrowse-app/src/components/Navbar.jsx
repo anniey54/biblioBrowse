@@ -12,9 +12,9 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const user = {
-    name: 'User Name Name Name User Name Name Name User Name Name Name User Name Name Name User Name Name Name',
+    name: 'UserName 123',
     profileURL: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    isAdmin: false
+    isAdmin: true
   }
 
   /* reset both menus in mobile navbar to false */
