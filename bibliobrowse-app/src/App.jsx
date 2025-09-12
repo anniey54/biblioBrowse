@@ -3,12 +3,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Books from './pages/books';
 import Navbar from './components/navbar';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
   return (
     <div>
       <BrowserRouter>
+      <ScrollToTop/>
       <Navbar />
         <div style={{marginTop: '64px'}}>
           <Routes>
