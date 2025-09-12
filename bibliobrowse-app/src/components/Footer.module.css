@@ -1,0 +1,41 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  gap: 20%;
+  background-color: var(--primary);
+  padding: 32px;
+  padding-top: 24px;
+  justify-content: space-between;
+  align-items: center;
+  a:hover {
+    color: var(--off-white);
+  }
+}
+
+.logoAbout {
+  h3 {
+    margin: 12px 0px;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  gap: 8%;
+  p {
+    font-weight: bold;
+    padding-bottom: 8px;
+  }
+}
+
+.linkColumnList {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  box-sizing: border-box;
+  gap: 8px;
+}
+
+

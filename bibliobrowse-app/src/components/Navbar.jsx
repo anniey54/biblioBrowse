@@ -77,7 +77,7 @@ const Navbar = () => {
                     <FontAwesomeIcon icon={isAccountMenuOpen ? faChevronUp : faChevronDown} size="lg"/>
                   </div>
                   {isAccountMenuOpen &&
-                     <div className={styles.mobileNav}>
+                    <div className={styles.mobileNav}>
                       <Link to={'/'} onClick={() => {resetMobileMenus()}}>Profile</Link>
                       <Link to={'/'} onClick={() => {resetMobileMenus()}}>Create Collection</Link>
                       { user.isAdmin && <Link to={'/'} onClick={() => {resetMobileMenus()}}>Create Book</Link> }
