@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import styles from './Footer.module.css';
 import Logo from './logo';
 import { Link } from 'react-router-dom';
+import AccordionLink from './AccordionLink';
 
 
 const Footer = () => {
-  const [mobileView, setMobileView] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isQuickLinkOpen, setIsQuickLinkOpen] = useState(false);
+  const [isBookGenreOpen, setIsBookGenreOpen] = useState(false);
 
   const LinkColumn = ({header, linkList}) => {
     return(
@@ -46,6 +47,34 @@ const Footer = () => {
           {name: 'Thriller', url: '/'}
         ]}/>
       </div>
+      <AccordionLink toggleItemFunct={() => setIsQuickLinkOpen(!isQuickLinkOpen)} 
+        label={"Quick links"} 
+        itemList={[
+          {label: 'Home', url: '/'},
+          {label: 'Explore books', url: '/books'},
+          {label: 'Explore collections', url: '/collections'},
+          {label: 'Sign in', url: '/signin'},
+          {label: 'Contact us', url: '/'}
+        ]} 
+        isMenuOpen={isQuickLinkOpen} 
+        styleMenu={styles.mobileMenu} 
+        styleLabel={styles.menuLabel} 
+        styleItemList={styles.mobileMenuItem}
+      />
+      <AccordionLink toggleItemFunct={() => setIsBookGenreOpen(!isBookGenreOpen)} 
+        label={"Book genres"} 
+        itemList={[
+          {label: 'Fantasy', url: '/'},
+          {label: 'Romance', url: '/books'},
+          {label: 'Mystery', url: '/collections'},
+          {label: 'Science Fiction', url: '/signin'},
+          {label: 'Thriller', url: '/'}
+        ]} 
+        isMenuOpen={isBookGenreOpen} 
+        styleMenu={styles.mobileMenu} 
+        styleLabel={styles.menuLabel} 
+        styleItemList={styles.mobileMenuItem}
+      />
     </div>
   )
 }

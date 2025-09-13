@@ -3,10 +3,11 @@ import Logo from "./logo";
 import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/zoom.css';
+import AccordionLink from './AccordionLink';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -71,20 +72,21 @@ const Navbar = () => {
 
           {/* signin or user profile and menu */}
           {Object.keys(user).length > 0
-              ? <div className={styles.mobileAccountMenu}>
-                  <div className={styles.accountName} onClick={() => {setIsAccountMenuOpen(!isAccountMenuOpen)}}>
-                    <p>{user.name}</p>
-                    <FontAwesomeIcon icon={isAccountMenuOpen ? faChevronUp : faChevronDown} size="lg"/>
-                  </div>
-                  {isAccountMenuOpen &&
-                    <div className={styles.mobileNav}>
-                      <Link to={'/'} onClick={() => {resetMobileMenus()}}>Profile</Link>
-                      <Link to={'/'} onClick={() => {resetMobileMenus()}}>Create Collection</Link>
-                      { user.isAdmin && <Link to={'/'} onClick={() => {resetMobileMenus()}}>Create Book</Link> }
-                      <Link to={'/'} onClick={() => {resetMobileMenus()}}>Logout</Link>
-                    </div>
-                  }
-                </div>
+              ? <AccordionLink toggleLabelFunct={() => setIsAccountMenuOpen(!isAccountMenuOpen)} 
+                  toggleItemFunct={() => resetMobileMenus()}
+                  label={user.name} 
+                  itemList={[
+                    {label: 'Profile', url: '/'},
+                    {label: 'Create Collection', url: '/'},
+                    {label: 'Create Book', url: '/'},
+                    {label: 'Logout', url: '/'}
+                  ]} 
+                  itemCond={user.isAdmin}
+                  isMenuOpen={isAccountMenuOpen} 
+                  styleMenu={styles.mobileAccountMenu} 
+                  styleLabel={styles.accountName} 
+                  styleItemList={styles.mobileNav}
+                />
               : <Link to={'/signin'} onClick={() => {resetMobileMenus()}}>Sign in</Link>
             }
         </div>

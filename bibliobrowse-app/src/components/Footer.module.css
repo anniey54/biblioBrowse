@@ -14,6 +14,8 @@
 }
 
 .logoAbout {
+  display: flex;
+  flex-direction: column;
   h3 {
     margin: 12px 0px;
   }
@@ -38,4 +40,67 @@
   gap: 8px;
 }
 
+.mobileMenu {
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--primary);
+    flex-direction: column;
+    a {
+        padding: 16px;
+        border-bottom: 1.5px solid white;
+        &:hover {
+            color: var(--text-black);
+            background-color: var(--off-white);
+        }
+    }
+}
 
+.menuLabel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px;
+  padding-left: 8%;
+  padding-right: 8%;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+  &:hover {
+      background-color: var(--off-white);
+  }
+}
+
+.mobileMenuItem {
+  display: flex;
+  flex-direction: column;
+  a {
+    border-bottom: 0;
+    padding-left: 12%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 24px 0;
+    flex-direction: column;
+  }
+  .logoAbout {
+    align-items: center;
+    h3 {
+      text-align: center;
+    }
+    div {
+      padding: 0 24px;
+      padding-bottom: 24px;
+    }
+  }
+  .links {
+    display: none;
+  }
+  .mobileMenu {
+    display: flex;
+  }
+}
