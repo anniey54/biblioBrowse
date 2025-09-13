@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.logoAbout}>
-        <Logo fontColour='white'/>
+        <Logo fontColour='white' isFooter={true}/>
         <div>
           <h3>What We're All About</h3>
           <p>Our book gallery offers a wide selection across all fiction genres to keep your reading journey fress and exciting. Whether you're a casual reader or an avid bookworm, we've got something special just for you.</p>
