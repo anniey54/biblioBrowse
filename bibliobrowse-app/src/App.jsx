@@ -5,6 +5,7 @@ import Books from './pages/books';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <div>
       <BrowserRouter>
       <ScrollToTop/>
+      <Toaster />
       <Navbar />
         <div style={{marginTop: '64px', minHeight:'100vh'}}>
           <Routes>
