@@ -6,12 +6,13 @@
   padding: 12px;
   background-color: white;
   border: 1px solid var(--text-black);
-  width: 320px; /* 320px */
-  height: 172px; /* 160px */
+  width: 320px;
+  height: 172px;
   img {
-    width: auto;
+    width: 97px;
     height: 100%;
     user-select: none;
+    object-fit: cover;
   }
 }
 
@@ -22,13 +23,26 @@
 }
 
 .cardText {
-  max-width: 197px;
+  max-width: 190px;
   height: 100%;
   .title {
     font-weight: bold;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    text-overflow: ellipsis;
+  }
+  .title:hover{
+    overflow: visible;
+    white-space: normal;
+    height:auto;
+  }
+  p { /* author */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow:hidden;
     text-overflow: ellipsis;
@@ -66,5 +80,25 @@
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+
+  /* small screens */
+  @media only screen and (max-width: 380px) {
+    .bookCard {
+      width: 280px;
+      height: 151px;
+      img {
+        width: 83px;
+      }
+    }
+    .buttons{
+      img {
+        width: 26px;
+        height: 26px;
+      }
+    }
+    .cardText {
+      max-width: 164px;
     }
   }
