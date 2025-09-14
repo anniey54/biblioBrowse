@@ -32,7 +32,7 @@ const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite
           </div>
           <div className={styles.buttons}>
             <FontAwesomeIcon icon={isFavourite ? faHeart : emptyHeart} color='var(--heart)' onClick={clickFavouriteButton}/>
-            <img draggable="false" src='./../../public/addOnCollectionIcon.svg' onClick={addOnCollection}/>
+            <img draggable="false" src='./../../addOnCollectionIcon.svg' onClick={addOnCollection}/>
           </div>
         </div>
       </div>
