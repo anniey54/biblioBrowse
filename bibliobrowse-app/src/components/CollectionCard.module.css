@@ -6,6 +6,7 @@
   width: 346px; /* 302px for 5 books or 370px */
   height: 180px; /* 182px or 184px*/
   background-color: white;
+  color: var(--text-black);
   border: 1px solid var(--text-black);
   padding: 12px;
 }
@@ -30,14 +31,13 @@
   text-overflow: ellipsis;
 }
 
-.bookNumAndButton {
+.favouriteButton {
+  position: relative;
+  top: -32px;
+  left: 313px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  p {
-    font-size: 0.85rem;
-  }
-  svg { /* favourite button */
+  align-items: center;
+  svg {
     width: 20px;
     height: 20px;
     &:hover {
