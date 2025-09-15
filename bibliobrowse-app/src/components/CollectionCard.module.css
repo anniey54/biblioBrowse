@@ -36,6 +36,7 @@
   top: -32px;
   left: 313px;
   display: flex;
+  width: fit-content;
   align-items: center;
   svg {
     width: 20px;

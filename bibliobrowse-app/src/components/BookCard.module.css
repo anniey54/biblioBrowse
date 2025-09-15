@@ -73,6 +73,7 @@ Link {
   top: -38px;
   left: 244px;
   display: flex;
+  width: fit-content;
   align-items: center;
   gap: 8px;
   span {

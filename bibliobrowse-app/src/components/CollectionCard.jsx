@@ -13,7 +13,7 @@ const CollectionCard = ({title, imageUrls, author, numBooks, isFavourite, toggle
   };
   
   return (
-    <div style={{marginBottom: '-20px'}}>
+    <div style={{marginBottom: '-20px', width: 'fit-content'}}>
       <Link to={'/'}>
         <div className={styles.collectionCard} >
           <div className={styles.bookCovers}>

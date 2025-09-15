@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite}) => {
   
   const addOnCollection = () => {
-    toast.success('Successfully added to collection');
+    toast.success('Successfully added book to collection');
   };
 
   const clickFavouriteButton = () => {
@@ -18,7 +18,7 @@ const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite
   };
 
   return (
-    <div style={{marginBottom: '-26px'}}>
+    <div style={{marginBottom: '-26px', width: 'fit-content'}}>
       <Link to={'/'} style={{display: 'flex', width: 'fit-content'}}>
         <div className={styles.bookCard}>
           <img src={imageUrl} alt='book cover' />
