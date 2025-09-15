@@ -1,3 +1,7 @@
+Link {
+  width: fit-content;
+}
+
 .bookCard {
   display: flex;
   flex-direction: row;
@@ -5,11 +9,12 @@
   gap: 8px;
   padding: 12px;
   background-color: white;
+  color: var(--text-black);
   border: 1px solid var(--text-black);
-  width: 320px;
-  height: 172px;
+  width: 310px;
+  height: 162px;
   img {
-    width: 97px;
+    width: 87px;
     height: 100%;
     user-select: none;
     object-fit: cover;
@@ -63,42 +68,54 @@
     align-items: center;
   }
   
-  .buttons {
-    display: flex;
+.buttons {
+  position: relative;
+  top: -38px;
+  left: 244px;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  span {
+    display: flex; 
     align-items: center;
-    gap: 8px;
-    svg {
-      width: 20px;
-      height: 20px;
-      &:hover {
-        cursor: pointer;
-      }
+    
+  }
+  svg { /* favourite button */
+    width: 20px;
+    height: 20px;
+    &:hover {
+      cursor: pointer;
     }
+  }
+  img { /* addOnCollectionIcon button */
+    width: 26px;
+    height: 26px;
+    user-select: none;
+    object-fit: cover;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+/* small screens */
+@media only screen and (max-width: 380px) {
+  .bookCard {
+    width: 280px;
+    height: 151px;
+    img {
+      width: 83px;
+    }
+  }
+  .buttons{
+    left: 214px;
     img {
       width: 26px;
       height: 26px;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
-
-  /* small screens */
-  @media only screen and (max-width: 380px) {
-    .bookCard {
-      width: 280px;
-      height: 151px;
-      img {
-        width: 83px;
-      }
-    }
-    .buttons{
-      img {
-        width: 26px;
-        height: 26px;
-      }
-    }
-    .cardText {
-      max-width: 164px;
-    }
+  .cardText {
+    max-width: 164px;
   }
+}
