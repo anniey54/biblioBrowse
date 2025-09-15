@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './BookCard.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,7 @@ const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite
 
   const clickFavouriteButton = () => {
     toggleFavourite();
-    if (!isFavourite) toast.success('Successfully added to favourite')
+    if (!isFavourite) toast.success('Successfully added book to favourite')
     else toast.success('Successfully removed book from favourite');
   };
 

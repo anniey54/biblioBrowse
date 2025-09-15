@@ -6,10 +6,10 @@
   padding: 12px;
   background-color: white;
   border: 1px solid var(--text-black);
-  width: 320px;
-  height: 172px;
+  width: 310px;
+  height: 162px;
   img {
-    width: 97px;
+    width: 87px;
     height: 100%;
     user-select: none;
     object-fit: cover;
@@ -67,14 +67,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    svg {
+    svg { /* favourite button */
       width: 20px;
       height: 20px;
       &:hover {
         cursor: pointer;
       }
     }
-    img {
+    img { /* addOnCollectionIcon button */
       width: 26px;
       height: 26px;
       &:hover {
