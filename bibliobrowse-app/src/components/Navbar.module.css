@@ -1,5 +1,6 @@
 .navbar {
     position: fixed;
+    z-index: 100;
     top: 0;
     box-sizing: border-box;
     width: 100%;
@@ -72,6 +73,7 @@
 
 .mobileNav {
     position: fixed;
+    z-index: 100;
     box-sizing: border-box;
     width: 100%;
     display: none;
