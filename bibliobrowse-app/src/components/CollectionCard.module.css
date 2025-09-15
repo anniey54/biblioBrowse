@@ -46,3 +46,16 @@
     }
   }
 }
+
+/* small screens */
+@media only screen and (max-width: 380px) {
+  .collectionCard {
+    width: 292px;
+  }
+  .bookCovers {
+    gap: 4px;
+  }
+  .favouriteButton {
+    left: 258px;
+  }
+}

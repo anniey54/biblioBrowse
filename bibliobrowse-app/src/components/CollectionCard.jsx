@@ -17,7 +17,7 @@ const CollectionCard = ({title, imageUrls, author, numBooks, isFavourite, toggle
       <Link to={'/'}>
         <div className={styles.collectionCard} >
           <div className={styles.bookCovers}>
-            {imageUrls.slice(0, 6).map((url, index) => (
+            {imageUrls.slice(0, 5).map((url, index) => (
               <img key={index} src={url}/>
             ))}
           </div>

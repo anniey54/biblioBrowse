@@ -109,6 +109,7 @@ Link {
     }
   }
   .buttons{
+    left: 214px;
     img {
       width: 26px;
       height: 26px;
