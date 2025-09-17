@@ -73,7 +73,8 @@ export default function books() {
         //   rating: 4.5,
         //   isFavourite: true
         // }, 
-      ]} />
+      ]}
+      viewMoreLink={'/books'} />
     </div>
   )
 }
