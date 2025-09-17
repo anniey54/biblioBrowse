@@ -14,7 +14,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
   const [lastIndex, setLastIndex] = useState(Math.ceil(itemList.length/3));
   const [isNextDisabled, setNextDisabled] = useState(false);
   const [isPrevDisabled, setPrevDisabled] = useState(false);
-  const [visibleItems, setVisibleItems] = useState(itemList.slice(0, 3)); // initially get the first three items
+  const [mobileViewButtons, setMobileViewButtons] = useState(false);
 
   useEffect(() => {
     const changeNumberOfItem = () => {
@@ -34,6 +34,10 @@ const Carousel = ({itemList, viewMoreLink}) => {
         console.log("2currentIndex", Math.floor(currentIndex/3));
         if (numberOfItems != 3) setCurrentIndex(Math.floor(currentIndex/3));
       }
+
+      // change view of arrow and view more buttons
+      if (window.innerWidth <= 460) setMobileViewButtons(true);
+      else setMobileViewButtons(false);
     }
     window.addEventListener("resize", changeNumberOfItem);
 
@@ -66,10 +70,12 @@ const Carousel = ({itemList, viewMoreLink}) => {
   return (
     <div className={styles.carousel}>
       <div className={styles.slider}>
-        <button onClick={prevSlide} disabled={isPrevDisabled} className={isPrevDisabled ?
+        {! mobileViewButtons && 
+          <button onClick={prevSlide} disabled={isPrevDisabled} className={isPrevDisabled ?
                   styles.disabledButton : ""}>
-          <FontAwesomeIcon icon={faChevronLeft}/>
-        </button>
+            <FontAwesomeIcon icon={faChevronLeft}/>
+          </button>
+        }
         <div className={styles.sliderContent}>
           {itemList.slice(currentIndex, currentIndex + numberOfItems).map((item, index) => (
             <BookCard key={index}
@@ -82,17 +88,37 @@ const Carousel = ({itemList, viewMoreLink}) => {
             />
           ))}
         </div>
-        <button onClick={nextSlide} disabled={isNextDisabled} className={isNextDisabled ?
-                  styles.disabledButton : ""}>
-          <FontAwesomeIcon icon={faChevronRight}/>
-        </button>
+        {! mobileViewButtons && 
+          <button onClick={nextSlide} disabled={isNextDisabled} className={isNextDisabled ?
+                    styles.disabledButton : ""}>
+            <FontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        }
       </div>
-      <Link to={viewMoreLink} className={styles.viewMoreButton}>
-        <button>
-          <p>View More</p>
-          <FontAwesomeIcon icon={faArrowRight}/>
-        </button>
-      </Link>
+      {mobileViewButtons
+        ? <div className={styles.mobileButtons}>
+          <button onClick={prevSlide} disabled={isPrevDisabled} id='mobilePrevButton' className={isPrevDisabled ?
+                    styles.disabledButton : ""}>
+            <FontAwesomeIcon icon={faChevronLeft}/>
+          </button>
+          <Link to={viewMoreLink} className={styles.viewMoreButton}>
+            <button>
+              <p>View More</p>
+              <FontAwesomeIcon icon={faArrowRight}/>
+            </button>
+          </Link>
+          <button onClick={nextSlide} disabled={isNextDisabled} id='mobileNextButton' className={isNextDisabled ?
+                    styles.disabledButton : ""}>
+            <FontAwesomeIcon icon={faChevronRight}/>
+          </button>
+        </div>
+        : <Link to={viewMoreLink} className={styles.viewMoreButton}>
+          <button>
+            <p>View More</p>
+            <FontAwesomeIcon icon={faArrowRight}/>
+          </button>
+        </Link>
+      }
     </div>
   )
 }

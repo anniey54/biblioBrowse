@@ -47,3 +47,41 @@
     gap: 4px;
   }
 }
+
+.mobileButtons {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      display: flex;
+      height: 41px;
+      align-items: center;
+    }
+    .viewMoreButton {
+      margin-left: 0;
+    }
+  }
+
+/* show two items */
+@media only screen and (max-width: 1100px) {
+  .carousel {
+    width: 732px;
+  }
+}
+
+/* show one item */
+@media only screen and (max-width: 780px) {
+  .carousel {
+    width: 410px;
+  }
+}
+
+/* move arrow buttons to bottom */
+@media only screen and (max-width: 460px) {
+  .carousel {
+    width: fit-content;
+  }
+}
