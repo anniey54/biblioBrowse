@@ -1,0 +1,12 @@
+.carousel {
+
+}
+
+.disabledButton {
+  background-color: lightgray;
+  opacity: 50%;
+  cursor: default;
+  &:hover {
+    background-color: lightgray;
+  }
+}

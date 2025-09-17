@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BookCard from '../components/bookCard';
 import CollectionCard from '../components/CollectionCard';
+import Carousel from '../components/Carousel';
 
 export default function books() {
   const [isBookFavourite, setIsBookFavourite] = useState(false);
@@ -31,6 +32,48 @@ export default function books() {
         isFavourite={isCollectionFavourite}
         toggleFavourite={() => setIsCollectionFavourite(!isCollectionFavourite)}
       />
+      <Carousel itemList={[
+        {
+          title: 'The Hunger Games',
+          imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+          author: '1Suzanne Collins',
+          rating: 4.5,
+          isFavourite: false
+        }, 
+        {
+          title: 'The Hunger Games',
+          imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+          author: '2Suzanne Collins',
+          rating: 4.5,
+          isFavourite: true
+        }, {
+          title: 'The Hunger Games',
+          imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+          author: '3Suzanne Collins',
+          rating: 4.5,
+          isFavourite: false
+        }, 
+        {
+          title: 'The Hunger Games',
+          imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+          author: '4Suzanne Collins',
+          rating: 4.5,
+          isFavourite: true
+        }, {
+          title: 'The Hunger Games',
+          imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+          author: '5Suzanne Collins',
+          rating: 4.5,
+          isFavourite: false
+        }, 
+        // {
+        //   title: 'The Hunger Games',
+        //   imageUrl: 'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
+        //   author: '6Suzanne Collins',
+        //   rating: 4.5,
+        //   isFavourite: true
+        // }, 
+      ]} />
     </div>
   )
 }
