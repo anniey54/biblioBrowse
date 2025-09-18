@@ -12,9 +12,9 @@ const CollectionCard = ({title, imageUrls, author, numBooks, isFavourite, toggle
   useEffect(() => {
     const changeNumberOfImage = () => {
       if (window.innerWidth <= 380) {
-        setImageSlice(imageUrls.slice(0, 5));
+        setImageSlice(imageUrls.slice(0, 4));
       } else {
-        setImageSlice(imageUrls.slice(0, 6));
+        setImageSlice(imageUrls.slice(0, 5));
       }
     }
 		window.addEventListener("resize", changeNumberOfImage);
