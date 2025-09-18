@@ -3,8 +3,8 @@
   flex-direction: column;
   box-sizing: border-box;
   gap: 8px;
-  width: 346px; /* 302px for 5 books or 370px */
-  height: 180px; /* 182px or 184px*/
+  width: 308px; 
+  height: 180px; 
   background-color: white;
   color: var(--text-black);
   border: 1px solid var(--text-black);
@@ -16,9 +16,9 @@
   flex-direction: row;
   box-sizing: border-box;
   height: 100%;
-  gap: 4px;
+  gap: 8px;
   img {
-    width: 50px; /* 52px or 54px*/
+    width: 50px; 
     height: 100%;
     user-select: none;
     object-fit: cover;
@@ -34,7 +34,7 @@
 .favouriteButton {
   position: relative;
   top: -32px;
-  left: 313px;
+  left: 275px;
   display: flex;
   width: fit-content;
   align-items: center;
@@ -50,12 +50,12 @@
 /* small screens */
 @media only screen and (max-width: 380px) {
   .collectionCard {
-    width: 292px;
+    width: 250px;
   }
   .bookCovers {
-    gap: 4px;
+    gap: 8px;
   }
   .favouriteButton {
-    left: 258px;
+    left: 217px;
   }
 }
