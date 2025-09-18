@@ -70,7 +70,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
   return (
     <div className={styles.carousel}>
       <div className={styles.slider}>
-        {! mobileViewButtons && 
+        {! mobileViewButtons && itemList.length > numberOfItems && 
           <button onClick={prevSlide} disabled={isPrevDisabled} className={isPrevDisabled ?
                   styles.disabledButton : ""}>
             <FontAwesomeIcon icon={faChevronLeft}/>
@@ -88,14 +88,14 @@ const Carousel = ({itemList, viewMoreLink}) => {
             />
           ))}
         </div>
-        {! mobileViewButtons && 
+        {! mobileViewButtons && itemList.length > numberOfItems && 
           <button onClick={nextSlide} disabled={isNextDisabled} className={isNextDisabled ?
                     styles.disabledButton : ""}>
             <FontAwesomeIcon icon={faChevronRight}/>
           </button>
         }
       </div>
-      {mobileViewButtons
+      {mobileViewButtons && itemList.length > numberOfItems
         ? <div className={styles.mobileButtons}>
           <button onClick={prevSlide} disabled={isPrevDisabled} id='mobilePrevButton' className={isPrevDisabled ?
                     styles.disabledButton : ""}>
