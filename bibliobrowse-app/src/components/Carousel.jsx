@@ -17,6 +17,8 @@ const Carousel = ({itemList, viewMoreLink}) => {
   const [mobileViewButtons, setMobileViewButtons] = useState(false);
 
   useEffect(() => {
+    // change the number of items displayed on slider at once
+    // edit multiple states when the screen size changes
     const changeNumberOfItem = () => {
       if (window.innerWidth <= 780) {
         setNumberOfItems(1);
@@ -25,17 +27,15 @@ const Carousel = ({itemList, viewMoreLink}) => {
       else if (window.innerWidth <= 1100) {
         setNumberOfItems(2);
         setLastIndex(Math.ceil(itemList.length/2));
-        console.log("1currentIndex", Math.floor(currentIndex/2));
         if (numberOfItems != 2) setCurrentIndex(Math.floor(currentIndex/2));
       } 
       else {
         setNumberOfItems(3);
         setLastIndex(Math.ceil(itemList.length/3));
-        console.log("2currentIndex", Math.floor(currentIndex/3));
         if (numberOfItems != 3) setCurrentIndex(Math.floor(currentIndex/3));
       }
 
-      // change view of arrow and view more buttons
+      // change position of arrow and view more buttons on mobile view
       if (window.innerWidth <= 460) setMobileViewButtons(true);
       else setMobileViewButtons(false);
     }
@@ -48,6 +48,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
 		};
   }, [numberOfItems]);
 
+  // disable/enable arrow buttons based on the current index
   useEffect(() => {
     currentIndex == 0 ? setPrevDisabled(true) : setPrevDisabled(false)
     numberOfItems != 1 && currentIndex >= lastIndex || numberOfItems == 1 && currentIndex + 1 >= lastIndex ? setNextDisabled(true) : setNextDisabled(false)
@@ -55,14 +56,12 @@ const Carousel = ({itemList, viewMoreLink}) => {
 
   const nextSlide = () => {
     if ((numberOfItems == 1 && currentIndex + 1 < lastIndex) || (numberOfItems != 1 && currentIndex < lastIndex)) {
-      console.log("3currentIndex", currentIndex + numberOfItems);
       setCurrentIndex(currentIndex + numberOfItems);
     }
   }
 
   const prevSlide = () => {
     if (currentIndex > 0) {
-      console.log("4currentIndex", currentIndex - numberOfItems);
       setCurrentIndex(currentIndex - numberOfItems);
     }
   }
@@ -70,12 +69,14 @@ const Carousel = ({itemList, viewMoreLink}) => {
   return (
     <div className={styles.carousel}>
       <div className={styles.slider}>
+        {/* prev button */}
         {! mobileViewButtons && itemList.length > numberOfItems && 
           <button onClick={prevSlide} disabled={isPrevDisabled} className={isPrevDisabled ?
                   styles.disabledButton : ""}>
             <FontAwesomeIcon icon={faChevronLeft}/>
           </button>
         }
+        {/* slider */}
         <div className={styles.sliderContent}>
           {itemList.slice(currentIndex, currentIndex + numberOfItems).map((item, index) => (
             <BookCard key={index}
@@ -88,6 +89,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
             />
           ))}
         </div>
+        {/* next button */}
         {! mobileViewButtons && itemList.length > numberOfItems && 
           <button onClick={nextSlide} disabled={isNextDisabled} className={isNextDisabled ?
                     styles.disabledButton : ""}>
@@ -95,6 +97,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
           </button>
         }
       </div>
+      {/* mobile view of arrow and view more buttons */}
       {mobileViewButtons && itemList.length > numberOfItems
         ? <div className={styles.mobileButtons}>
           <button onClick={prevSlide} disabled={isPrevDisabled} id='mobilePrevButton' className={isPrevDisabled ?
