@@ -4,10 +4,12 @@ import BookCard from './bookCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import CollectionCard from './CollectionCard';
 
-const Carousel = ({itemList, viewMoreLink}) => {
-  // erase this later
+const Carousel = ({itemList, viewMoreLink, cardType}) => {
+  // erase these later
   const [isBookFavourite, setIsBookFavourite] = useState(false);
+  const [isCollectionFavourite, setIsCollectionFavourite] = useState(true);
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberOfItems, setNumberOfItems] = useState(window.innerWidth <= 780 ? 1 : window.innerWidth <= 1100 ? 2 : 3);
@@ -66,6 +68,28 @@ const Carousel = ({itemList, viewMoreLink}) => {
     }
   }
 
+  const RenderCard = ({item, index}) => {
+    if (cardType === 'book') {
+      return <BookCard key={index}
+        title={item.title}
+        imageUrl={item.imageUrl}
+        author={item.author}
+        rating={item.rating}
+        isFavourite={item.isBookFavourite}
+        toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
+      />
+    } else {
+      return <CollectionCard key={index}
+        title={item.title}
+        imageUrls={item.imageUrls}
+        author={item.author}
+        numBooks={item.numBooks}
+        isFavourite={item.isBookFavourite}
+        toggleFavourite={() => setIsCollectionFavourite(!isCollectionFavourite)}
+      />
+    }
+  }
+
   return (
     <div className={styles.carousel}>
       <div className={styles.slider}>
@@ -79,14 +103,7 @@ const Carousel = ({itemList, viewMoreLink}) => {
         {/* slider */}
         <div className={styles.sliderContent}>
           {itemList.slice(currentIndex, currentIndex + numberOfItems).map((item, index) => (
-            <BookCard key={index}
-              title={item.title}
-              imageUrl={item.imageUrl}
-              author={item.author}
-              rating={item.rating}
-              isFavourite={item.isBookFavourite}
-              toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
-            />
+            <RenderCard item={item} index={index}/>
           ))}
         </div>
         {/* next button */}
