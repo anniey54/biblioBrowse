@@ -1,5 +1,7 @@
 package com.annie.bibliobrowse_api.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Column;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
+@DynamicInsert
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
@@ -41,4 +44,6 @@ public class User {
   @Column(name = "profile_image")
 	private String profileImage;
 
+  @Column(name = "is_admin", columnDefinition = "boolean default true")
+	private Boolean isAdmin;
 }

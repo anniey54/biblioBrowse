@@ -45,7 +45,8 @@ public class UserController {
       userObject.setUsername(user.getUsername());
       userObject.setEmail(user.getEmail());
       userObject.setPassword(user.getPassword());
-      userObject.setPhotoUrl(user.getPhotoUrl());
+      userObject.setProfileImage(user.getProfileImage());
+      userObject.setIsAdmin(user.getIsAdmin());
     }
     return ResponseEntity.ok(userService.updateUser(userObject));
   }

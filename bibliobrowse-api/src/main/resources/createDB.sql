@@ -21,7 +21,8 @@ CREATE TABLE users (
   email VARCHAR(255) UNIQUE NOT NULL,
   salt CHAR(16) NOT NULL,
   password_hash TEXT NOT NULL,
-  profile_image BYTEA DEFAULT NULL
+  profile_image BYTEA DEFAULT NULL,
+  is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE authors (
