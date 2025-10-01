@@ -5,14 +5,14 @@ CREATE DATABASE bibliobrowse_db;
 \c bibliobrowse_db
 
 -- Custom data types
-CREATE TYPE genre AS ENUM ('Romance', 'Fantasy', 'Science fiction', 'Action', 'Adventure', 'Mystery', 'Horror', 'Comedy', 
-'Drama', 'Historical', 'Urban', 'Thriller', 'Philosophical', 'Religious', 'Crime', 'Poetry', 'Short stories', 'Dystopia', 
-'Contemporary', 'LGBT', 'Slice of life', 'Supernatural', 'Sport', 'Erotica', 'Coming of age', 'Folklore', 'Detective', 'Graphic novel',
-'Political', 'Cyberpunk', 'Alien', 'Time travel', 'Military', 'Superhero', 'War', 'Nonfiction', 'Music', 'Academy', 'Business', 
-'Cooking', 'Psychological', 'Apocalypse', 'Economics', 'Travel', 'Magic', 'Female protagonist', 'Male protagonist', 'Classic', 'Mental health');
+CREATE TYPE genre AS ENUM ('Romance', 'Fantasy', 'Science_fiction', 'Action', 'Adventure', 'Mystery', 'Horror', 'Comedy', 
+'Drama', 'Historical', 'Urban', 'Thriller', 'Philosophical', 'Religious', 'Crime', 'Poetry', 'Short_stories', 'Dystopia', 
+'Contemporary', 'LGBT', 'Slice_of_life', 'Supernatural', 'Sport', 'Erotica', 'Coming_of_age', 'Folklore', 'Detective', 'Graphic_novel',
+'Political', 'Cyberpunk', 'Alien', 'Time_travel', 'Military', 'Superhero', 'War', 'Nonfiction', 'Music', 'Academy', 'Business', 
+'Cooking', 'Psychological', 'Apocalypse', 'Economics', 'Travel', 'Magic', 'Female_protagonist', 'Male_protagonist', 'Classic', 'Mental_health');
 CREATE TYPE collection_status AS ENUM ('Public', 'Private');
-CREATE TYPE book_status AS ENUM ('Want to read', 'Reading', 'Finished');
-CREATE TYPE age_range AS ENUM ('Middle Grade', 'Young Adult', 'Adult');
+CREATE TYPE book_status AS ENUM ('Want_to_read', 'Reading', 'Finished');
+CREATE TYPE age_range AS ENUM ('Middle_grade', 'Young_adult', 'Adult');
 
 -- Create tables
 CREATE TABLE users (
@@ -41,10 +41,10 @@ CREATE TABLE books (
   title VARCHAR(255) NOT NULL,
   image_cover BYTEA DEFAULT NULL,
   author_id INTEGER NOT NULL,
-  genres genre ARRAY DEFAULT '{}',
+  genres VARCHAR(25) ARRAY DEFAULT '{}',
   summary TEXT DEFAULT '',
-  audience age_range DEFAULT 'Young Adult',
-  language VARCHAR(20) NOT NULL,
+  audience VARCHAR(20) DEFAULT 'Young_adult',
+  language VARCHAR(20) NOT NULL DEFAULT 'English',
   number_page INTEGER DEFAULT 0,
   publisher VARCHAR(255) DEFAULT '',
   ISBN VARCHAR(255) DEFAULT '',
@@ -56,7 +56,7 @@ CREATE TABLE books (
 CREATE TABLE user_book_status (
   user_id INTEGER NOT NULL,
   book_id INTEGER NOT NULL,
-  status book_status DEFAULT 'Want to read',
+  status VARCHAR(20) DEFAULT 'Want_to_read',
   PRIMARY KEY (user_id, book_id),
   CONSTRAINT fk_book_status_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
   CONSTRAINT fk_book_status_book FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
@@ -79,11 +79,11 @@ CREATE TABLE reviews (
 CREATE TABLE collections (
   collection_id SERIAL PRIMARY KEY,
   creator INTEGER NOT NULL,
-  status collection_status DEFAULT 'Private',
+  status VARCHAR(10) DEFAULT 'Private',
   title VARCHAR(255) NOT NULL,
   summary TEXT DEFAULT '',
   number_of_likes INTEGER DEFAULT 0,
-  genres genre ARRAY DEFAULT '{}',
+  genres VARCHAR(25) ARRAY DEFAULT '{}',
   created_at DATE DEFAULT CURRENT_DATE,
   last_updated_at DATE DEFAULT CURRENT_DATE,
   CONSTRAINT fk_collection_creator FOREIGN KEY (creator) REFERENCES users(user_id) ON DELETE CASCADE
@@ -127,29 +127,29 @@ INSERT INTO authors (full_name, about, date_of_birth, website, social_x, instagr
   ('Stephen Chbosky', 'Stephen Chbosky is a writer, director, and producer known for his young adult novel The Perks of Being a Wallflower, which he also adapted into a film. He has also written and directed films like Wonder, written screenplays for Rent and Beauty and the Beast, and authored the horror novel Imaginary Friend. Chbosky''s work often explores themes relevant to young people and incorporates his experiences growing up in Pittsburgh, Pennsylvania.', 
     'January 25, 1970', '', 'https://x.com/StephenChbosky', 'https://www.instagram.com/chboskys/?hl=en');
 
-INSERT INTO books (title, author_id, genres, summary, audience, language, number_page, publisher, ISBN, series, volume) VALUES
-  ('Omniscient Reader''s Viewpoint, Vol. 1', 2,
-    ARRAY[('Action')::genre, ('Apocalypse')::genre, ('Fantasy')::genre, ('Urban')::genre, ('Science fiction')::genre, ('Horror')::genre, ('Psychological')::genre, ('Dystopia')::genre, ('Mystery')::genre, ('Male protagonist')::genre], 
+INSERT INTO books_3 (title, author_id, genres, summary, audience, language, number_page, publisher, ISBN, series, volume) VALUES
+  ('test', 2,
+    ARRAY[('Action')], 
     'IF YOU ARE READING THIS, YOU WILL SURVIVE. Kill each other within the time limit or die. It''s just another evening commute on the train, until the passengers are given an order they can''t disobey. Utter chaos ensues, but ordinary office worker Dokja Kim only feels an unsettling calm. He knows exactly how this will play out! The subway car, the passengers'' reactions, even the bizarre creature that suddenly appears to oversee this sadistic scenario...everything is straight out of his favorite story, an online novel so obscure he is its sole reader. And as the only one who knows where the plot is headed, Dokja must use his knowledge to survive the oncoming apocalypse!',
-    ('Young Adult')::age_range, 'English', 260, 'Ize Press', '9798400903526', 'Omniscient Reader''s Viewpoint', 1), 
+    'Young_adult', 'English', 260, 'Ize Press', '9798400903526', 'Omniscient Reader''s Viewpoint', 1), 
   ('The Hunger Games', 1,
-    ARRAY[('Action')::genre, ('Adventure')::genre, ('Fantasy')::genre, ('Thriller')::genre, ('Science fiction')::genre, ('Horror')::genre, ('Psychological')::genre, ('Dystopia')::genre, ('Female protagonist')::genre], 
+    ARRAY['Action', 'Adventure', 'Fantasy', 'Thriller', 'Science_fiction', 'Horror', 'Psychological', 'Dystopia', 'Female_protagonist'], 
     'Winning means fame and fortune. Losing means certain death. The Hunger Games have begun. . . .
     In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV.
     Sixteen-year-old Katniss Everdeen regards it as a death sentence when she steps forward to take her sister''s place in the Games. But Katniss has been close to dead before-and survival, for her, is second nature. Without really meaning to, she becomes a contender. But if she is to win, she will have to start making choices that weigh survival against humanity and life against love.', 
-    ('Young Adult')::age_range, 'English', 374, 'Scholastic Press', '9780439023481 (ISBN10: 0439023483)', 'The Hunger Games', 1), 
+    'Young_adult', 'English', 374, 'Scholastic Press', '9780439023481 (ISBN10: 0439023483)', 'The Hunger Games', 1), 
   ('The Perks of Being a Wallflower', 3,
-    ARRAY[('Classic')::genre, ('Coming of age')::genre, ('Romance')::genre, ('Mental health')::genre, ('LGBT')::genre, ('Slice of life')::genre, ('Psychological')::genre, ('Male protagonist')::genre], 
+    ARRAY['Classic', 'Coming_of_age', 'Romance', 'Mental_health', 'LGBT', 'Slice_of_life', 'Psychological', 'Male_protagonist'], 
     'standing on the fringes of life...
     offers a unique perspective. But there comes a time to see
     what it looks like from the dance floor.
     This haunting novel about the dilemma of passivity vs. passion marks the stunning debut of a provocative new voice in contemporary fiction: The Perks of Being A WALLFLOWER
     This is the story of what it''s like to grow up in high school. More intimate than a diary, Charlie''s letters are singular and unique, hilarious and devastating. We may not know where he lives. We may not know to whom he is writing. All we know is the world he shares. Caught between trying to live his life and trying to run from it puts him on a strange course through uncharted territory. The world of first dates and mixed tapes, family dramas and new friends. The world of sex, drugs, and The Rocky Horror Picture Show, when all one requires is that the perfect song on that perfect drive to feel infinite.
     Through Charlie, Stephen Chbosky has created a deeply affecting coming-of-age story, a powerful novel that will spirit you back to those wild and poignant roller coaster days known as growing up.',
-    ('Young Adult')::age_range, 'English', 213, 'MTV Books/Pocket Books', '9781451696196', '', NULL);
+    'Young_adult', 'English', 213, 'MTV Books/Pocket Books', '9781451696196', '', NULL);
 
 INSERT INTO user_book_status (user_id, book_id, status) VALUES
-  (1, 3, 'Want to read'),
+  (1, 3, 'Want_to_read'),
   (2, 2, 'Reading'),
   (3, 3, 'Finished');
 
@@ -166,12 +166,12 @@ INSERT INTO reviews (user_id, book_id, rating, title, comment, number_of_likes) 
   (3, 1, 4,'','', 0);
 
 INSERT INTO collections (creator, status, title, summary, number_of_likes, genres) VALUES
-  (1, ('Public')::collection_status, 'My Personal Book Collection: A Handpicked Collection of Beloved Reads', 
+  (1, 'Public', 'My Personal Book Collection: A Handpicked Collection of Beloved Reads', 
     'Welcome to a deeply personal exploration of my favourite literary works. 
     My taste tends to gravitate towards thought-provoking literary fiction, insightful historical accounts, and thrilling mysteries that keep me guessing. You''ll also find a fair share of character-driven sagas and well-crafted science fiction that explore complex ideas. 
     Each book here holds a special significance, representing moments of revelation, joy, solace, or pure escapism. I often revisit these cherished volumes, finding new insights with every read, and they are the first ones I recommend when asked for a truly great book. Dive in and discover the stories that have shaped my journey as a reader, and perhaps find a new favourite to add to your own collection.',
-    5, ARRAY[('Adventure')::genre, ('Romance')::genre, ('Action')::genre, ('Dystopia')::genre, ('Science fiction')::genre]),
-  (2, ('Private')::collection_status, 'Dystopian fiction novels', '', 0, ARRAY[('Action')::genre, ('Dystopia')::genre, ('Science fiction')::genre]);
+    5, ARRAY['Adventure', 'Romance', 'Action', 'Dystopia', 'Science_fiction']),
+  (2, 'Private', 'Dystopian fiction novels', '', 0, ARRAY['Action', 'Dystopia', 'Science_fiction']);
 
 INSERT INTO collection_books (collection_id, book_id) VALUES
   (1, 1), (1, 2), (1, 3),
