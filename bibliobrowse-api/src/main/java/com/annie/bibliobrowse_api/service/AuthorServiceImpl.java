@@ -20,6 +20,13 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
   @Override
+  public List<Book> getBooksByAuthor(Long authorId) {
+		List<Book> books = authorRepository.findByIdWithBooks(authorId)
+      .orElseThrow(() -> new RuntimeException("Author not found"));
+    return books;
+  }
+
+  @Override
   public Author getAuthor(Long id) {
     return authorRepository.findById(id).get();
   }

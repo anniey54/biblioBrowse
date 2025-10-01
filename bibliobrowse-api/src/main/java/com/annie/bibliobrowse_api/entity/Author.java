@@ -54,6 +54,4 @@ public class Author {
   @Column(columnDefinition = "varchar(255) default ''")
   private String instagram;
 
-  // @OneToMany(mappedBy="author", cascade = CascadeType.ALL)
-  // private List<Book> books;
 }
