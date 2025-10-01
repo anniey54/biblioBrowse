@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.annie.bibliobrowse_api.domain.Author;
+import com.annie.bibliobrowse_api.entity.Author;
+import com.annie.bibliobrowse_api.entity.Book;
 import com.annie.bibliobrowse_api.repository.AuthorRepository;
 
 @Service

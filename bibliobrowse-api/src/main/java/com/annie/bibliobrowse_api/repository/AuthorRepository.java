@@ -1,8 +1,10 @@
 package com.annie.bibliobrowse_api.repository;
 
-import org.springframework.stereotype.Repository;
+
 import org.springframework.data.repository.CrudRepository;
-import com.annie.bibliobrowse_api.domain.Author;
+import org.springframework.stereotype.Repository;
+
+import com.annie.bibliobrowse_api.entity.Author;
 
 @Repository
 public interface AuthorRepository extends CrudRepository<Author, Long> {

@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.annie.bibliobrowse_api.domain.Author;
+import com.annie.bibliobrowse_api.entity.Author;
+import com.annie.bibliobrowse_api.entity.Book;
 import com.annie.bibliobrowse_api.service.AuthorService;
 
 @RestController
@@ -30,6 +31,11 @@ public class AuthorController {
   @GetMapping("/api/authors/{id}")
   public ResponseEntity<Author> getAuthor(@PathVariable("id") Long id) {
       return ResponseEntity.ok(authorService.getAuthor(id));
+  }
+
+  @GetMapping("/api/authors/{id}/books")
+  public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable("id") Long id) {
+      return ResponseEntity.ok(authorService.getBooksByAuthor(id));
   }
 
   @PostMapping("/api/authors")

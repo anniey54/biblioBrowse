@@ -2,7 +2,7 @@ package com.annie.bibliobrowse_api.service;
 
 import java.util.List;
 
-import com.annie.bibliobrowse_api.domain.User;
+import com.annie.bibliobrowse_api.entity.User;
 
 public interface UserService {
 

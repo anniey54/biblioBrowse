@@ -1,4 +1,4 @@
-package com.annie.bibliobrowse_api.domain;
+package com.annie.bibliobrowse_api.entity;
 
 import org.hibernate.annotations.DynamicInsert;
 

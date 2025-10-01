@@ -2,7 +2,7 @@ package com.annie.bibliobrowse_api.service;
 
 import java.util.List;
 
-import com.annie.bibliobrowse_api.domain.Author;
+import com.annie.bibliobrowse_api.entity.Author;
 
 public interface AuthorService {
   List<Author>getAllAuthors();

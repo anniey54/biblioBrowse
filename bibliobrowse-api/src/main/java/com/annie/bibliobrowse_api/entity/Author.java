@@ -1,14 +1,18 @@
-package com.annie.bibliobrowse_api.domain;
+package com.annie.bibliobrowse_api.entity;
+
+import java.util.List;
 
 import org.hibernate.annotations.DynamicInsert;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,9 +45,15 @@ public class Author {
   @Column(columnDefinition = "char(18) default ''")
   private String dateOfBirth;
 
+  @Column(columnDefinition = "varchar(255) default ''")
+  private String website;
+
   @Column(name = "social_x", columnDefinition = "varchar(255) default ''")
   private String socialX;
 
   @Column(columnDefinition = "varchar(255) default ''")
   private String instagram;
+
+  // @OneToMany(mappedBy="author", cascade = CascadeType.ALL)
+  // private List<Book> books;
 }

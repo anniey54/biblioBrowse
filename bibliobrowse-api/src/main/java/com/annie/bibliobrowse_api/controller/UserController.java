@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.annie.bibliobrowse_api.domain.User;
+import com.annie.bibliobrowse_api.entity.User;
 import com.annie.bibliobrowse_api.service.UserService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
