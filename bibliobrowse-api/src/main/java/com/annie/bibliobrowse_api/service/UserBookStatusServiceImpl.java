@@ -1,7 +1,5 @@
 package com.annie.bibliobrowse_api.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +22,6 @@ public class UserBookStatusServiceImpl implements UserBookStatusService {
 
   @Autowired
   private BookRepository bookRepository;
-  
-  // @Override
-  // public List<UserBookStatus> getStatusByUserId(Long userId) {
-  //   return userBookStatusRepository.findByUserId(userId);  
-  // }
 
   @Override
   public UserBookStatusDTO getById(UserBookId id) {
@@ -54,24 +47,6 @@ public class UserBookStatusServiceImpl implements UserBookStatusService {
     UserBookStatusDTO ubsDTO = new UserBookStatusDTO(userId, bookId, status);
     return ubsDTO;
   }
-
-  // @Override
-  // public UserBookStatusDTO updateUserBookStatus(Long userId, Long bookId, String status) {
-  //   UserBookId id = new UserBookId(userId, bookId);
-
-  //   // Create new UserBookStatus object
-  //   UserBookStatus newUserBookStatus = new UserBookStatus();
-  //   newUserBookStatus.setId(id);
-  //   newUserBookStatus.setStatus(status);
-  //   userBookStatusRepository.save(newUserBookStatus);
-
-  //   UserBookStatusDTO ubsDTO = new UserBookStatusDTO(userId, bookId, status);
-  //   return ubsDTO;
-  // }
-  // @Override
-  // public UserBookStatus updateUserBookStatus(Long userId, Long bookId, String status) {
-  //   return userBookStatusRepository.save(userBookStatus);
-  // }
 
   @Override
   public String deleteUserBookStatus(UserBookId id) {
