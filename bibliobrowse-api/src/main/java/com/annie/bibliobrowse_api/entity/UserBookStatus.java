@@ -3,10 +3,13 @@ package com.annie.bibliobrowse_api.entity;
 import org.hibernate.annotations.DynamicInsert;
 
 import com.annie.bibliobrowse_api.composite_key.UserBookId;
+import com.annie.bibliobrowse_api.type.BookStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -27,8 +30,9 @@ public class UserBookStatus {
   @EmbeddedId
   private UserBookId id;
 
+  @Enumerated(EnumType.STRING)
   @Column(columnDefinition = "VARCHAR(20) default 'Want_to_read'")
-  private String status;
+  private BookStatus status;
   
   @ManyToOne
   @MapsId("userId")

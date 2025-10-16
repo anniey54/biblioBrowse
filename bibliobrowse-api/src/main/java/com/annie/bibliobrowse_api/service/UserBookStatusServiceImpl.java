@@ -11,6 +11,7 @@ import com.annie.bibliobrowse_api.entity.UserBookStatus;
 import com.annie.bibliobrowse_api.repository.BookRepository;
 import com.annie.bibliobrowse_api.repository.UserBookStatusRepository;
 import com.annie.bibliobrowse_api.repository.UserRepository;
+import com.annie.bibliobrowse_api.type.BookStatus;
 
 @Service
 public class UserBookStatusServiceImpl implements UserBookStatusService {
@@ -31,20 +32,20 @@ public class UserBookStatusServiceImpl implements UserBookStatusService {
   }
 
   @Override
-  public UserBookStatusDTO createUpdateUserBookStatus(Long userId, Long bookId, String status) {
+  public UserBookStatusDTO createUpdateUserBookStatus(Long userId, Long bookId, BookStatus status) {
     // find user and book by their ids
     User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
     Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
-
+    BookStatus finalStatus = status != null ? status : BookStatus.Want_to_read;
+    
     // Create new UserBookStatus object
     UserBookStatus newUserBookStatus = new UserBookStatus();
     newUserBookStatus.setId(new UserBookId(userId, bookId));
     newUserBookStatus.setUser(user);
     newUserBookStatus.setBook(book);
-    newUserBookStatus.setStatus(status == null ? "Want_to_read" : status);
+    newUserBookStatus.setStatus(finalStatus);
     userBookStatusRepository.save(newUserBookStatus);
-
-    UserBookStatusDTO ubsDTO = new UserBookStatusDTO(userId, bookId, status);
+    UserBookStatusDTO ubsDTO = new UserBookStatusDTO(userId, bookId, finalStatus);
     return ubsDTO;
   }
 

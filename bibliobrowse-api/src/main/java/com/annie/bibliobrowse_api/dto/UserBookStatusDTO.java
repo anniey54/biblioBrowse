@@ -1,11 +1,13 @@
 package com.annie.bibliobrowse_api.dto;
 
+import com.annie.bibliobrowse_api.type.BookStatus;
+
 public class UserBookStatusDTO {
   private Long userId;
   private Long bookId;
-  private String status;
+  private BookStatus status;
 
-  public UserBookStatusDTO(Long userId, Long bookId, String status) {
+  public UserBookStatusDTO(Long userId, Long bookId, BookStatus status) {
     this.userId = userId;
     this.bookId = bookId;
     this.status = status;
@@ -20,7 +22,7 @@ public class UserBookStatusDTO {
     return bookId;
   }
 
-  public String getStatus() {
+  public BookStatus getStatus() {
     return status;
   }
 
@@ -33,7 +35,7 @@ public class UserBookStatusDTO {
     this.bookId = bookId;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(BookStatus status) {
     this.status = status;
   }
 }
