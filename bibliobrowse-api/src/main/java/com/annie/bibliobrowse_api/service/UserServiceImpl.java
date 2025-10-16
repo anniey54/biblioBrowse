@@ -1,11 +1,14 @@
 package com.annie.bibliobrowse_api.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.annie.bibliobrowse_api.dto.UserBookStatusDTO;
 import com.annie.bibliobrowse_api.entity.User;
+import com.annie.bibliobrowse_api.entity.UserBookStatus;
 import com.annie.bibliobrowse_api.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +23,16 @@ public class UserServiceImpl implements UserService {
 	public List<User>getAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
+
+  @Override
+  public List<UserBookStatusDTO> getBooksWithStatus(Long id) {
+    User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+    List<UserBookStatus> userBookStatus = user.getUserBookStatuses();
+
+    return userBookStatus.stream()
+      .map(bookStatus -> new UserBookStatusDTO(bookStatus.getUser().getId(), bookStatus.getBook().getId(), bookStatus.getStatus()))
+      .collect(Collectors.toList());
+  }
 	
   @Override
 	public User getUser(Long id) {

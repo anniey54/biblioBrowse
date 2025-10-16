@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.annie.bibliobrowse_api.dto.UserBookStatusDTO;
 import com.annie.bibliobrowse_api.entity.User;
 import com.annie.bibliobrowse_api.service.UserService;
 
@@ -32,6 +33,12 @@ public class UserController {
   public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
       return ResponseEntity.ok(userService.getUser(id));
   }
+
+  @GetMapping("/api/users/{id}/book-status")
+  public ResponseEntity<List<UserBookStatusDTO>> getAllBooksWithStatus(@PathVariable("id") Long id) {
+    return ResponseEntity.ok(userService.getBooksWithStatus(id));
+  }
+  
   
   @PostMapping("/api/users")
   public ResponseEntity<User> createUser(@RequestBody User user) {
