@@ -4,16 +4,6 @@ CREATE DATABASE bibliobrowse_db;
 
 \c bibliobrowse_db
 
--- Custom data types
-CREATE TYPE genre AS ENUM ('Romance', 'Fantasy', 'Science_fiction', 'Action', 'Adventure', 'Mystery', 'Horror', 'Comedy', 
-'Drama', 'Historical', 'Urban', 'Thriller', 'Philosophical', 'Religious', 'Crime', 'Poetry', 'Short_stories', 'Dystopia', 
-'Contemporary', 'LGBT', 'Slice_of_life', 'Supernatural', 'Sport', 'Erotica', 'Coming_of_age', 'Folklore', 'Detective', 'Graphic_novel',
-'Political', 'Cyberpunk', 'Alien', 'Time_travel', 'Military', 'Superhero', 'War', 'Nonfiction', 'Music', 'Academy', 'Business', 
-'Cooking', 'Psychological', 'Apocalypse', 'Economics', 'Travel', 'Magic', 'Female_protagonist', 'Male_protagonist', 'Classic', 'Mental_health');
-CREATE TYPE collection_status AS ENUM ('Public', 'Private');
-CREATE TYPE book_status AS ENUM ('Want_to_read', 'Reading', 'Finished');
-CREATE TYPE age_range AS ENUM ('Middle_grade', 'Young_adult', 'Adult');
-
 -- Create tables
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,

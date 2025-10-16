@@ -6,6 +6,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import com.annie.bibliobrowse_api.type.AgeRange;
 import com.annie.bibliobrowse_api.type.Genre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Column;
@@ -15,6 +16,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -72,4 +74,8 @@ public class Book {
 
   @Column(columnDefinition = "INTEGER default NULL")
   private Integer volume;
+
+  @JsonIgnore
+  @OneToMany(mappedBy = "book")
+  private List<UserBookStatus> userBookStatuses;
 }
