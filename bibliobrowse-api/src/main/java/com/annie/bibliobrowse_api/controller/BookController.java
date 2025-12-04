@@ -22,7 +22,7 @@ public class BookController {
   @Autowired
   private BookService bookService;
 
-    @GetMapping("/api/books")
+  @GetMapping("/api/books")
   public ResponseEntity<List<Book>> getAllBooks() {
       return ResponseEntity.ok(bookService.getAllBooks());
   }
@@ -37,24 +37,9 @@ public class BookController {
       return ResponseEntity.ok(bookService.createBook(book));
   }
 
-  @PutMapping("/api/books/{id}")
-  public ResponseEntity<Book> updateBook(@PathVariable("id") Long id, @RequestBody Book book) {
-    Book bookObject = bookService.getBook(id);
-    if (bookObject != null) {
-      bookObject.setTitle(book.getTitle());
-      bookObject.setImageCover(book.getImageCover());
-      bookObject.setAuthor(book.getAuthor());
-      bookObject.setGenres(book.getGenres());
-      bookObject.setSummary(book.getSummary());
-      bookObject.setAudience(book.getAudience());
-      bookObject.setLanguage(book.getLanguage());
-      bookObject.setNumberPage(book.getNumberPage());
-      bookObject.setPublisher(book.getPublisher());
-      bookObject.setIsbn(book.getIsbn());
-      bookObject.setSeries(book.getSeries());
-      bookObject.setVolume(book.getVolume());
-    }
-    return ResponseEntity.ok(bookService.updateBook(bookObject));
+  @PutMapping("/api/books")
+  public ResponseEntity<Book> updateBook(@RequestBody Book book) {
+    return ResponseEntity.ok(bookService.updateBook(book));
   }
 
   @DeleteMapping("/api/books/{id}")

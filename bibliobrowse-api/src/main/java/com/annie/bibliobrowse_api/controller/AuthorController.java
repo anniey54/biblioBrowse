@@ -43,18 +43,9 @@ public class AuthorController {
       return ResponseEntity.ok(authorService.createAuthor(author));
   }
 
-  @PutMapping("/api/authors/{id}")
-  public ResponseEntity<Author> updateAuthor(@PathVariable("id") Long id, @RequestBody Author author) {
-    Author authorObject = authorService.getAuthor(id);
-    if (authorObject != null) {
-      authorObject.setFullName(author.getFullName());
-      authorObject.setAbout(author.getAbout());
-      authorObject.setDateOfBirth(author.getDateOfBirth());
-      authorObject.setProfileImage(author.getProfileImage());
-      authorObject.setSocialX(author.getSocialX());
-      authorObject.setInstagram(author.getInstagram());
-    }
-    return ResponseEntity.ok(authorService.updateAuthor(authorObject));
+  @PutMapping("/api/authors")
+  public ResponseEntity<Author> updateAuthor(@RequestBody Author author) {
+    return ResponseEntity.ok(authorService.updateAuthor(author));
   }
 
   @DeleteMapping("/api/authors/{id}")

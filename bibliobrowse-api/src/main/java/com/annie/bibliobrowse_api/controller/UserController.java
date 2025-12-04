@@ -45,17 +45,9 @@ public class UserController {
       return ResponseEntity.ok(userService.createUser(user));
   }
 
-  @PutMapping("/api/users/{id}")
-  public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-    User userObject = userService.getUser(id);
-    if (userObject != null) {
-      userObject.setUsername(user.getUsername());
-      userObject.setEmail(user.getEmail());
-      userObject.setPassword(user.getPassword());
-      userObject.setProfileImage(user.getProfileImage());
-      userObject.setIsAdmin(user.getIsAdmin());
-    }
-    return ResponseEntity.ok(userService.updateUser(userObject));
+  @PutMapping("/api/users")
+  public ResponseEntity<User> updateUser(@RequestBody User user) {
+    return ResponseEntity.ok(userService.updateUser(user));
   }
 
   @DeleteMapping("/api/users/{id}")

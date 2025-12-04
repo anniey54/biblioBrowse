@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "books")
 public class Book {
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   @Column(name = "book_id", unique = true, updatable = false)
   private Long id;
 

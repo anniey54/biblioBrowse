@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "authors")
 public class Author {
   @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "author_id", unique = true, updatable = false)
 	private Long id;
 
