@@ -11,6 +11,14 @@ BiblioBrowse allows users to:
 
 ## Get Started
 First, clone this repository.
+### Backend Setup
+To run this application, you need:
+- Java Development Kit (JDK 17 or higher)
+- PostgreSQL
+- any Java IDE
+
+Navigate to the backend directory called "bibliobrowse-api" and create a database using the provided commands from the file `bibliobrowse-api/src/main/resources/createDB.sql`.
+After creating the database, you can use a Java IDE to run the Spring boot application.
 ### Frontend Setup
 Navigate to the frontend directory called "bibliobrowse-app" and install the dependencies listed in the package.json file using the command below.
 ```bash
