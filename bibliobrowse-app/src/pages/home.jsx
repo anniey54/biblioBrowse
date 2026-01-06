@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from'./home.module.css';
-import heroImage from './../../public/homepage-background.avif';
+import heroImage from './../../public/homepage-background.png';
 
 export default function home() {
   return (
