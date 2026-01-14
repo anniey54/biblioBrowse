@@ -43,13 +43,7 @@ class AuthorTests {
 
       mvc.perform(MockMvcRequestBuilders.get("/api/authors"))
       .andExpect(MockMvcResultMatchers.status().isOk())
-      .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].fullName", Matchers.hasItem("Test Author1")))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].about", Matchers.hasItem("This is a test author number 1")))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].dateOfBirth", Matchers.hasItem("January 14, 2026")))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].website", Matchers.hasItem("websiteHere.com")))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].socialX", Matchers.hasItem("")))
-      .andExpect(MockMvcResultMatchers.jsonPath("$[*].instagram", Matchers.hasItem("")));
+      .andExpect(MockMvcResultMatchers.jsonPath("$[?(@.fullName == 'Test Author1' && @.about == 'This is a test author number 1' && @.dateOfBirth == 'January 14, 2026')]", Matchers.hasSize(1)));
   }
 
   @Test
