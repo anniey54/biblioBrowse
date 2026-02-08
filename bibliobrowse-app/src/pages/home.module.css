@@ -31,7 +31,7 @@
 .heroContent {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 5%;
   max-width: 573px;
   height: fit-content;
   z-index: 2;
@@ -111,6 +111,18 @@
 @media screen and (max-width: 549px) {
   .signUpSection {
     padding: 40px;
+  }
+  .heroButtons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .heroContent {
+    padding: 0%;
+    padding-bottom: 20px;
+  }
+  .heroImage {
+    height: 520px;
   }
 }
 
