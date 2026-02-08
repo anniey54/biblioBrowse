@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from'./home.module.css';
 import heroImage from './../../public/homepage-background.png';
+import signUpIllustration from './../../public/homepage-illustration.svg';
 import { useEffect, useState } from 'react';
 import Carousel from '../components/Carousel';
 
@@ -69,9 +70,14 @@ export default function home() {
       </div>
       {/* Sign up section */}
       <div className={styles.signUpSection}>
-        <h2>Your Next Great Read Awaits</h2>
-        <p>Sign up to track your reading progress, add reviews and ratings, and organize your library effortlessly. Plus, create custom collections that reflect your unique taste and discover books tailored just for you.</p>
-        <button>Sign up</button>
+        <div className={styles.signUpText}>
+          <h2>Your Next Great Read Awaits</h2>
+          <p>Sign up to track your reading progress, add reviews and ratings, and organize your library effortlessly. Plus, create custom collections that reflect your unique taste and discover books tailored just for you.</p>
+          <button>Sign up</button>
+        </div>
+        <div className={styles.signUpImage}>
+          <img src={signUpIllustration} alt='Home page illustration' />
+        </div>
       </div>
       {/* popular collections */}
       <div className={styles.popularSection}>
