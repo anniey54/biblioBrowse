@@ -48,7 +48,7 @@ public class User {
   @Column(name = "profile_image")
 	private String profileImage;
 
-  @Column(name = "is_admin", columnDefinition = "boolean default true")
+  @Column(name = "is_admin", columnDefinition = "boolean default false")
 	private Boolean isAdmin;
 
   @JsonIgnore
