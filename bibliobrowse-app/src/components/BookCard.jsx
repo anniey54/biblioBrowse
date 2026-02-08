@@ -4,9 +4,27 @@ import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import {faHeart as emptyHeart} from "@fortawesome/free-regular-svg-icons"
 import toast from 'react-hot-toast'; 
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite}) => {
-  
+  const [authorName, setAuthorName] = useState("");
+
+  useEffect (() => {
+    const getAuthor = async () => {
+      try {
+        fetch(`http://localhost:8080/api/authors/${author}`)
+          .then((response) => {return response.json()})
+          .then((data) => {
+            setAuthorName(data.fullName);
+          })
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
+    getAuthor();
+  }, []);
+
   const addOnCollection = () => {
     toast.success('Successfully added book to collection');
   };
@@ -25,7 +43,7 @@ const BookCard = ({title, imageUrl, author, rating, isFavourite, toggleFavourite
           <div className={styles.cardContent}>
             <div className={styles.cardText}>
               <p className={styles.title}>{title}</p>
-              <p>{author}</p>
+              <p>{authorName}</p>
             </div>
             <div className={styles.ratingAndButtons}>
               <div className={styles.rating}>

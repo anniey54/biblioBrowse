@@ -68,9 +68,9 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
     }
   }
 
-  const RenderCard = ({item, index}) => {
+  const RenderCard = ({item}) => {
     if (cardType === 'book') {
-      return <BookCard key={index}
+      return <BookCard
         title={item.title}
         imageUrl={item.imageUrl}
         author={item.author}
@@ -79,11 +79,10 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
         toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
       />
     } else {
-      return <CollectionCard key={index}
+      return <CollectionCard
+        id={item.id}
         title={item.title}
-        imageUrls={item.imageUrls}
         author={item.author}
-        numBooks={item.numBooks}
         isFavourite={item.isBookFavourite}
         toggleFavourite={() => setIsCollectionFavourite(!isCollectionFavourite)}
       />
@@ -103,7 +102,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
         {/* slider */}
         <div className={styles.sliderContent}>
           {itemList.slice(currentIndex, currentIndex + numberOfItems).map((item, index) => (
-            <RenderCard item={item} index={index}/>
+            <RenderCard item={item} key={index}/>
           ))}
         </div>
         {/* next button */}
