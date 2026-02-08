@@ -82,7 +82,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
       return <CollectionCard
         id={item.id}
         title={item.title}
-        author={item.author}
+        author={item.creator}
         isFavourite={item.isBookFavourite}
         toggleFavourite={() => setIsCollectionFavourite(!isCollectionFavourite)}
       />
