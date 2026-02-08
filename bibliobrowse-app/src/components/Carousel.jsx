@@ -13,7 +13,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberOfItems, setNumberOfItems] = useState(window.innerWidth <= 780 ? 1 : window.innerWidth <= 1100 ? 2 : 3);
-  const [lastIndex, setLastIndex] = useState(Math.ceil(itemList.length/3));
+  const [lastIndex, setLastIndex] = useState();
   const [isNextDisabled, setNextDisabled] = useState(false);
   const [isPrevDisabled, setPrevDisabled] = useState(false);
   const [mobileViewButtons, setMobileViewButtons] = useState(false);
@@ -48,7 +48,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
 		return () => {
 			window.removeEventListener("resize", changeNumberOfItem);
 		};
-  }, [numberOfItems]);
+  }, []);
 
   // disable/enable arrow buttons based on the current index
   useEffect(() => {
@@ -68,9 +68,9 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
     }
   }
 
-  const RenderCard = ({item, index}) => {
+  const RenderCard = ({item}) => {
     if (cardType === 'book') {
-      return <BookCard key={index}
+      return <BookCard
         title={item.title}
         imageUrl={item.imageUrl}
         author={item.author}
@@ -79,11 +79,10 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
         toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
       />
     } else {
-      return <CollectionCard key={index}
+      return <CollectionCard
+        id={item.id}
         title={item.title}
-        imageUrls={item.imageUrls}
-        author={item.author}
-        numBooks={item.numBooks}
+        author={item.creator}
         isFavourite={item.isBookFavourite}
         toggleFavourite={() => setIsCollectionFavourite(!isCollectionFavourite)}
       />
@@ -103,7 +102,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
         {/* slider */}
         <div className={styles.sliderContent}>
           {itemList.slice(currentIndex, currentIndex + numberOfItems).map((item, index) => (
-            <RenderCard item={item} index={index}/>
+            <RenderCard item={item} key={index}/>
           ))}
         </div>
         {/* next button */}

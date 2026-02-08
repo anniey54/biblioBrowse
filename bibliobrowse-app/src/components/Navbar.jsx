@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./logo";
 import styles from './Navbar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
@@ -12,11 +12,42 @@ import AccordionLink from './AccordionLink';
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [isTopOfScreen, setIsTopOfScreen] = useState(true);
+  const location = useLocation();
   const user = {
     name: 'UserName 123',
     profileURL: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     isAdmin: true
   }
+
+  // check if current path is home
+  useEffect(() => {
+    if (window.location.pathname === '/') {
+      setIsHomePage(true);
+    }
+    else {
+      setIsHomePage(false);
+    }
+  }, [location.pathname]);
+
+  // check if screen scrolled down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 50) {
+        setIsTopOfScreen(false);
+      } else {
+        setIsTopOfScreen(true);
+      } 
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   /* reset both menus in mobile navbar to false */
   const resetMobileMenus = () => {
@@ -26,7 +57,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={styles.navbar}>
+      <nav className={isHomePage && isTopOfScreen ?styles.homeNavbar :styles.navbar}>
           <Logo />
           {/* desktop */}
           <div className={styles.desktop}>
