@@ -13,7 +13,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberOfItems, setNumberOfItems] = useState(window.innerWidth <= 780 ? 1 : window.innerWidth <= 1100 ? 2 : 3);
-  const [lastIndex, setLastIndex] = useState(Math.ceil(itemList.length/3));
+  const [lastIndex, setLastIndex] = useState();
   const [isNextDisabled, setNextDisabled] = useState(false);
   const [isPrevDisabled, setPrevDisabled] = useState(false);
   const [mobileViewButtons, setMobileViewButtons] = useState(false);
@@ -48,7 +48,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
 		return () => {
 			window.removeEventListener("resize", changeNumberOfItem);
 		};
-  }, [numberOfItems]);
+  }, []);
 
   // disable/enable arrow buttons based on the current index
   useEffect(() => {
