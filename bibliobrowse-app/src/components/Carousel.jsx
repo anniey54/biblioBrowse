@@ -72,8 +72,8 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
     if (cardType === 'book') {
       return <BookCard
         title={item.title}
-        imageUrl={item.imageUrl}
-        author={item.author}
+        imageUrl={item.imageCover}
+        author={item.author} 
         rating={item.rating}
         isFavourite={item.isBookFavourite}
         toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
