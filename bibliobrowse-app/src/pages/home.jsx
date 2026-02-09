@@ -15,8 +15,9 @@ export default function home() {
         fetch('http://localhost:8080/api/books')
           .then((response) => {return response.json()})
           .then((data) => {
-            setPopularBooks(data.slice(0, 3));
-            console.log("books:", data.slice(0, 4));
+            const sortedData = data.sort((a, b) => a.id - b.id);
+            setPopularBooks(sortedData.slice(0, 3));
+            console.log("books:", sortedData.slice(0, 4));
           })
       } catch (error) {
         console.error(error.message);

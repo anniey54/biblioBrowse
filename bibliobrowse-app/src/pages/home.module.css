@@ -142,3 +142,11 @@
     }
   }
 }
+
+@media screen and (min-width: 1250px) {
+.heroImage {
+    img {
+      object-position: center;
+    }
+  }
+}
