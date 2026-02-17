@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from'./home.module.css';
-import heroImage from './../../public/homepage-background.png';
-import signUpIllustration from './../../public/homepage-illustration.svg';
+import heroImage from '/homepage-background.png';
+import signUpIllustration from '/homepage-illustration.svg';
 import { useEffect, useState } from 'react';
 import Carousel from '../components/Carousel';
 

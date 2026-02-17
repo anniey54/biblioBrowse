@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BookCard from '../components/bookCard';
 import CollectionCard from '../components/CollectionCard';
 import Carousel from '../components/Carousel';
+import SearchBar from '../components/SearchBar';
 
 export default function books() {
   const [isBookFavourite, setIsBookFavourite] = useState(false);
@@ -9,15 +10,17 @@ export default function books() {
 
   return (
     <div>
-      <BookCard 
+      <h2>Explore Books</h2>
+      <SearchBar />
+      {/* <BookCard 
         title={'The Hunger Games'}
         imageUrl={'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg'}
         author={'Suzanne Collins'}
         rating={4.5}
         isFavourite={isBookFavourite}
         toggleFavourite={() => setIsBookFavourite(!isBookFavourite)}
-      />
-      <CollectionCard
+      /> */}
+      {/* <CollectionCard
         title={'My Favourite Books'}
         imageUrls={['https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
           'https://m.media-amazon.com/images/I/71un2hI4mcL.jpg',
@@ -78,8 +81,8 @@ export default function books() {
           //   isFavourite: true
           // }, 
         ]} 
-      />
-            <Carousel viewMoreLink={'/collections'}
+      /> */}
+            {/* <Carousel viewMoreLink={'/collections'}
         cardType={'collection'}
         itemList={[
           {
@@ -148,8 +151,8 @@ export default function books() {
           //   numBooks: 25,
           //   isFavourite: true
           // }, 
-        ]} 
-      />
+        ]}
+      />  */}
 
     </div>
   )
