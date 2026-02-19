@@ -4,25 +4,22 @@ import styles from './SearchBar.module.css';
 const SearchBar = () => {
   const [search, setSearch] = useState("");
 
-  /*
   useEffect(() => {
-    const getPopularBooks = async () => {
+    const getListOfSearchBooks = async () => {
+      const query = "test";
       try {
-        fetch('http://localhost:8080/api/books')
+        fetch(`http://localhost:8080/api/books/search?query=${query}`)
           .then((response) => {return response.json()})
           .then((data) => {
-            const sortedData = data.sort((a, b) => a.id - b.id);
-            setPopularBooks(sortedData.slice(0, 3));
-            console.log("books:", sortedData.slice(0, 4));
+            console.log("searched books:", data);
           })
       } catch (error) {
         console.error(error.message);
       }
     }
 
-    getPopularBooks();
+    getListOfSearchBooks();
   },[]);
-  */
 
   const handleChangeValue = (event) => {
     setSearch(event.target.value);

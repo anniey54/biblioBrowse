@@ -24,6 +24,13 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  public List<Book> searchBooks(String query) {
+    List<Book> books = bookRepository.findByTitleAndAuthor(query.toLowerCase())
+      .orElseThrow(() -> new RuntimeException("Books are not found"));
+    return books;
+  }
+
+  @Override
   public Book createBook(Book book) {
     return bookRepository.save(book);
   }

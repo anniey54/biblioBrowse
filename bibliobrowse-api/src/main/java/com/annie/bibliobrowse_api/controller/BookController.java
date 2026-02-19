@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.annie.bibliobrowse_api.entity.Book;
@@ -32,6 +33,11 @@ public class BookController {
       return ResponseEntity.ok(bookService.getBook(id));
   }
   
+  @GetMapping("/api/books/search")
+  public ResponseEntity<List<Book>> searchBooks(@RequestParam("query") String query) {
+      return ResponseEntity.ok(bookService.searchBooks(query));
+  }
+
   @PostMapping("/api/books")
   public ResponseEntity<Book> createBook(@RequestBody Book book) {
       return ResponseEntity.ok(bookService.createBook(book));
