@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.annie.bibliobrowse_api.entity.Collection;
@@ -30,6 +31,11 @@ public class CollectionController {
   @GetMapping("/api/collections/{id}")
   public ResponseEntity<Collection> getCollection(@PathVariable("id") Long id) {
       return ResponseEntity.ok(collectionService.getCollection(id));
+  }
+
+  @GetMapping("/api/collections/search")
+  public ResponseEntity<List<Collection>> searchCollections(@RequestParam("query") String query) {
+      return ResponseEntity.ok(collectionService.searchCollections(query));
   }
   
   @PostMapping("/api/collections")

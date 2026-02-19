@@ -5,9 +5,10 @@ import java.util.List;
 import com.annie.bibliobrowse_api.entity.Book;
 
 public interface BookService {
-  List<Book>getAllBooks();
+  List<Book> getAllBooks();
 	Book getBook(Long id);
 	Book createBook(Book book);
 	Book updateBook(Book book);
 	String deleteBook(Book book);
+  List<Book> searchBooks(String query);
 }
