@@ -25,6 +25,13 @@ public class CollectionServiceImpl implements CollectionService {
   }
 
   @Override
+  public List<Collection> searchCollections(String query) {
+    List<Collection> collections = collectionRepository.findByTitleAndCreator(query.toLowerCase())
+      .orElseThrow(() -> new RuntimeException("Collections are not found"));
+    return collections;
+  }
+
+  @Override
   public Collection createCollection(Collection collection) {
     return collectionRepository.save(collection);
   }

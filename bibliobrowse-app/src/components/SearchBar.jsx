@@ -18,7 +18,21 @@ const SearchBar = () => {
       }
     }
 
+    const getListOfSearchCollections = async () => {
+      const query = "Strawberr";
+      try {
+        fetch(`http://localhost:8080/api/collections/search?query=${query}`)
+          .then((response) => {return response.json()})
+          .then((data) => {
+            console.log("searched collections:", data);
+          })
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
     getListOfSearchBooks();
+    getListOfSearchCollections();
   },[]);
 
   const handleChangeValue = (event) => {
