@@ -1,46 +1,41 @@
 import { useEffect, useState } from 'react';
 import styles from './SearchBar.module.css';
 
-const SearchBar = () => {
+const SearchBar = (handleSearchResult) => {
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const getListOfSearchBooks = async () => {
-      const query = "test";
-      try {
-        fetch(`http://localhost:8080/api/books/search?query=${query}`)
-          .then((response) => {return response.json()})
-          .then((data) => {
-            console.log("searched books:", data);
-          })
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
+  // const getListOfSearchBooks = async () => {
+  //   const query = "test";
+  //   try {
+  //     fetch(`http://localhost:8080/api/books/search?query=${query}`)
+  //       .then((response) => {return response.json()})
+  //       .then((data) => {
+  //         console.log("searched books:", data);
+  //       })
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // }
 
-    const getListOfSearchCollections = async () => {
-      const query = "Strawberr";
-      try {
-        fetch(`http://localhost:8080/api/collections/search?query=${query}`)
-          .then((response) => {return response.json()})
-          .then((data) => {
-            console.log("searched collections:", data);
-          })
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-
-    getListOfSearchBooks();
-    getListOfSearchCollections();
-  },[]);
+  // const getListOfSearchCollections = async () => {
+  //   const query = "Strawberr";
+  //   try {
+  //     fetch(`http://localhost:8080/api/collections/search?query=${query}`)
+  //       .then((response) => {return response.json()})
+  //       .then((data) => {
+  //         console.log("searched collections:", data);
+  //       })
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // }
 
   const handleChangeValue = (event) => {
     setSearch(event.target.value);
   };
 
   const handleSearch = () => {
-    
+    handleSearch();
   };
 
   return (
