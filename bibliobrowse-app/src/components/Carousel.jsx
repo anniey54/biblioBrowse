@@ -120,7 +120,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
                     styles.disabledButton : ""}>
             <FontAwesomeIcon icon={faChevronLeft}/>
           </button>
-          <Link to={viewMoreLink} className={styles.viewMoreButton}>
+          <Link to={viewMoreLink} className={styles.viewMoreButton} data-testid={`popular-${cardType}-view-more`}>
             <button>
               <p>View More</p>
               <FontAwesomeIcon icon={faArrowRight}/>
@@ -131,7 +131,7 @@ const Carousel = ({itemList, viewMoreLink, cardType}) => {
             <FontAwesomeIcon icon={faChevronRight}/>
           </button>
         </div>
-        : <Link to={viewMoreLink} className={styles.viewMoreButton}>
+        : <Link to={viewMoreLink} className={styles.viewMoreButton} data-testid={`popular-${cardType}-view-more`}>
           <button>
             <p>View More</p>
             <FontAwesomeIcon icon={faArrowRight}/>

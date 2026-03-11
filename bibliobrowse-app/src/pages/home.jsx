@@ -47,11 +47,11 @@ export default function home() {
       {/* Hero */}
       <div className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1>Welcome to BiblioBrowse</h1>
-          <p>Explore thousands of fiction books and curated collections to find your next read. Track your reading progress, add reviews, organize your library, and create custom collections that match your taste.</p>
+          <h1 data-testid="home-hero-title">Welcome to BiblioBrowse</h1>
+          <p data-testid="home-hero-paragraph">Explore thousands of fiction books and curated collections to find your next read. Track your reading progress, add reviews, organize your library, and create custom collections that match your taste.</p>
           <div className={styles.heroButtons}>
             <Link to={'/books'}>
-              <button>Browse Books</button>
+              <button >Browse Books</button>
             </Link>
             <Link to={'/collections'}>
               <button>Browse Collections</button>
@@ -72,8 +72,8 @@ export default function home() {
       {/* Sign up section */}
       <div className={styles.signUpSection}>
         <div className={styles.signUpText}>
-          <h2>Your Next Great Read Awaits</h2>
-          <p>Sign up to track your reading progress, add reviews and ratings, and organize your library effortlessly. Plus, create custom collections that reflect your unique taste and discover books tailored just for you.</p>
+          <h2 data-testid="home-signup-title">Your Next Great Read Awaits</h2>
+          <p data-testid="home-signup-paragraph">Sign up to track your reading progress, add reviews and ratings, and organize your library effortlessly. Plus, create custom collections that reflect your unique taste and discover books tailored just for you.</p>
           <button>Sign up</button>
         </div>
         <div className={styles.signUpImage}>
